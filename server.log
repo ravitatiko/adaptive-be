@@ -1,0 +1,36 @@
+INFO:     Will watch for changes in these directories: ['/Users/ravi/adaptive-learning/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [49200] using WatchFiles
+/Users/ravi/Library/Python/3.12/lib/python/site-packages/pydantic/_internal/_config.py:373: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+Google API key not configured. Summarization will not work.
+INFO:     Started server process [49244]
+INFO:     Waiting for application startup.
+Failed to connect to MongoDB: Invalid URI scheme: URI must begin with 'mongodb://' or 'mongodb+srv://'
+ERROR:    Traceback (most recent call last):
+  File "/Users/ravi/Library/Python/3.12/lib/python/site-packages/starlette/routing.py", line 677, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ravi/adaptive-learning/backend/app/main.py", line 15, in lifespan
+    await connect_to_mongo()
+  File "/Users/ravi/adaptive-learning/backend/app/core/mongodb.py", line 27, in connect_to_mongo
+    raise e
+  File "/Users/ravi/adaptive-learning/backend/app/core/mongodb.py", line 17, in connect_to_mongo
+    mongodb.client = AsyncIOMotorClient(settings.database_url)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ravi/Library/Python/3.12/lib/python/site-packages/motor/core.py", line 163, in __init__
+    delegate = self.__delegate_class__(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ravi/Library/Python/3.12/lib/python/site-packages/pymongo/mongo_client.py", line 771, in __init__
+    res = uri_parser.parse_uri(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/ravi/Library/Python/3.12/lib/python/site-packages/pymongo/uri_parser.py", line 497, in parse_uri
+    raise InvalidURI(f"Invalid URI scheme: URI must begin with '{SCHEME}' or '{SRV_SCHEME}'")
+pymongo.errors.InvalidURI: Invalid URI scheme: URI must begin with 'mongodb://' or 'mongodb+srv://'
+
+ERROR:    Application startup failed. Exiting.
+INFO:     Stopping reloader process [49200]
